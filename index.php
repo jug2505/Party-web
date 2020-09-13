@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="ru">
   <head>
-    <!-- Required meta tags -->
+    <!-- Мета-теги -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    
+    <!-- Стили -->
     <style>
       @import url("style/head.css");  
     </style>
+
     <title>ДА!</title>
   
   </head>
@@ -27,11 +29,13 @@
           <source src="video/Volgograd.mp4" type="video/mp4">
         </video>
 
+        <!-- Надпись перед видео -->
         <div align=center>
           <div class="container text-white" >
             <h1 class="display-4">Демократическая альтернатива</h1>
             <p class="lead">Мы ждём вас. Вступайте в партию “Демократическая альтернатива”</p>
             <p>
+              <!-- Кнопки со ссылками на другие страницы -->
               <a href="about.php" class="btn btn-primary my-2">О нас</a>
               <a href="#" class="btn btn-secondary my-2">Вступить в партию</a>
             </p>
@@ -41,20 +45,26 @@
 
       <!-- Альбом с новостями-->
       <div class="album py-5 bg-light">
+
+        <!-- Надпись по центру "Наши новости" -->
         <div align="center">
           <h2><b style="font-size:larger;">Наши новости</b></h2>
         </div>
+
         <div class="container">
-
           <div class="row">
-
+            
+            <!-- Новость -->
             <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
+                <!-- Картинка новости id.jpeg -->
                 <image src="image/6.jpeg" width="100%" height="225">
                 <div class="card-body">
+                  <!-- Текст новости -->
                   <p class="card-text">В Волгоградской области наши волонтеры очистили леса от более чем 25 тонн мусора.</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
+                      <!-- Кнопка открытия новости -->
                       <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
                     </div>
                   </div>
@@ -138,6 +148,7 @@
       </div>
     </main>
 
+    <!-- Footer -->
     <?php include('footer.html');?>
 
     <!-- Optional JavaScript -->

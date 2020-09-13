@@ -1,3 +1,4 @@
+/* Для того, чтобы видео прокручиволось в фоне */
 .jumbotron {
   position: relative;
   overflow: hidden;
@@ -10,7 +11,6 @@
   top: 0;
   width:100%;
   height:100%;
-  /*  object-fit is not supported on IE  */
   object-fit: cover;
   opacity:0.5;
 }
@@ -19,6 +19,7 @@
   position: relative;
 }
 
+/* Для того, чтобы footer был внизу */
 html {
   position: relative;
   min-height: 100%;

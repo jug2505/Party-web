@@ -20,10 +20,14 @@
     
     <!-- Main -->
     <main role="main">
+      <!-- Надпись по центру -->
       <div align="center">
         <h2><b>Вступайте в партию "Демократическая альтернатива"</b></h2>
       </div>
 
+      <!-- Текст в две колонки -->
+      <!-- Первая - информация -->
+      <!-- Вторая - призыв -->
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-8" id="content">
@@ -62,6 +66,7 @@
         
     </main>
 
+    <!-- Footer -->
     <?php include('footer.html');?>
 
     <!-- Optional JavaScript -->

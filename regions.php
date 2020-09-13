@@ -20,10 +20,12 @@
     
     <!-- Main -->
     <main role="main">
+      <!-- Надпись по центру -->
       <div align="center">
         <h2><b style="font-size:larger;">Региональные отделения</b></h2>
       </div>
 
+      <!-- Таблица -->
       <div align="center">
         <table class="table table-bordered w-75">
             <thead class="thead-light">
@@ -59,6 +61,7 @@
         
     </main>
 
+    <!-- Footer -->
     <?php include('footer.html');?>
 
     <!-- Optional JavaScript -->
