@@ -12,7 +12,7 @@
     <style>
       @import url("style/head.css");  
     </style>
-
+    
     <title>ДА!</title>
   
   </head>
@@ -30,7 +30,7 @@
         </video>
 
         <!-- Надпись перед видео -->
-        <div align=center>
+        <div style="text-align: center">
           <div class="container text-white" >
             <h1 class="display-4">Демократическая альтернатива</h1>
             <p class="lead">Мы ждём вас. Вступайте в партию “Демократическая альтернатива”</p>
@@ -47,7 +47,7 @@
       <div class="album py-5 bg-light">
 
         <!-- Надпись по центру "Наши новости" -->
-        <div align="center">
+        <div style="text-align: center">
           <h2><b style="font-size:larger;">Наши новости</b></h2>
         </div>
 
