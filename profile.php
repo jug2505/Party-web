@@ -1,3 +1,5 @@
+<?php include ('statistic/stat.php');?>
+
 <?php
 session_start();
 if (!$_SESSION['user']) {

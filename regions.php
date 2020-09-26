@@ -1,3 +1,5 @@
+<?php include ('statistic/stat.php');?>
+
 <!doctype html>
 <html lang="ru">
   <head>
@@ -21,7 +23,7 @@
     <!-- Main -->
     <main role="main">
       <!-- Надпись по центру -->
-      <div align="center">
+      <div  style="text-align: center">
         <h2><b style="font-size:larger;">Региональные отделения</b></h2>
       </div>
 

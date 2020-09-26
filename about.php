@@ -1,3 +1,5 @@
+<?php include ('statistic/stat.php');?>
+
 <!doctype html>
 <html lang="ru">
   <head>
