@@ -2,10 +2,15 @@
 
 <?php
 session_start();
+
 if (!$_SESSION['user']) {
   header('Location: /');
 }
-?>
+
+if ($_SESSION['user']['full_name'] === 'admin' && $_SESSION['user']['email'] === 'admin@admin'){
+  header('Location: admin.php');
+}
+?>  
 
 <!doctype html>
 <html lang="ru">

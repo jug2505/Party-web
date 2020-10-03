@@ -43,7 +43,7 @@
                        <td>' . $row['date'] . '</td>
                        <td>' . $row['hosts'] . '</td>
                        <td>' . $row['views'] . '</td>
-                   </tr>';
+                      </tr>';
               }
             ?>
             </tbody>

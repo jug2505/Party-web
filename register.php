@@ -16,17 +16,17 @@
 
   <!-- Форма регистрации -->
 
-  <form action="database/signup.php" method="post">
+  <form name="regForm" action="database/signup.php" onsubmit="return validateForm()" method="post">
     <label>ФИО</label>
-    <input type="text" name="full_name" placeholder="Введите свое полное имя">
+    <input id="full_name" type="text" name="full_name" placeholder="Введите свое полное имя">
     <label>Логин</label>
-    <input type="text" name="login" placeholder="Введите свой логин">
+    <input id="login" type="text" name="login" placeholder="Введите свой логин">
     <label>Почта</label>
-    <input type="email" name="email" placeholder="Введите адрес своей почты">
+    <input id="email" type="email" name="email" placeholder="Введите адрес своей почты">
     <label>Пароль</label>
-    <input type="password" name="password" placeholder="Введите пароль">
+    <input id="password" type="password" name="password" placeholder="Введите пароль">
     <label>Подтверждение пароля</label>
-    <input type="password" name="password_confirm" placeholder="Подтвердите пароль">
+    <input id="password_confirm" type="password" name="password_confirm" placeholder="Подтвердите пароль">
     <button type="submit">Зарегистрироваться</button>
     <p>
       У вас уже есть аккаунт? - <a href="/">авторизируйтесь</a>!
@@ -37,7 +37,9 @@
       }
       unset($_SESSION['message']);
     ?>
+    <div id="error"></div>
   </form>
 
 </body>
+<script type="text/javascript" src="scripts/reg_validation.js"></script>
 </html>

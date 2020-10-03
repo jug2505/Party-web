@@ -30,7 +30,7 @@ if (!isBot()){
 
     // Проверка, есть ли уже данный IP в базе
     $current_ip = mysqli_query($connect, "SELECT `ip_id` FROM `ips` WHERE `ip_address`='$visitor_ip'");
-    // Если IP-адрес уже был (не уникальный посетитель)
+    // не уникальный посетитель
     if (mysqli_num_rows($current_ip) === 1){
       // Добавляем для текущей даты +1 просмотр
       mysqli_query($connect, "UPDATE `visits` SET `views`=`views`+1 WHERE `date`='$date'");

@@ -1,5 +1,5 @@
-<?php include ('statistic/stat.php');?>
-
+<?php include_once ('statistic/stat.php');?>
+<?php require_once ('database/connect.php'); ?>
 <!doctype html>
 <html lang="ru">
   <head>
@@ -17,7 +17,7 @@
     
     <title>ДА!</title>
   
-  </head>
+  </head> 
   <body>
     <!-- Header -->
     <?php include('header.html');?>
@@ -56,93 +56,34 @@
         <div class="container">
           <div class="row">
             
-            <!-- Новость -->
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <!-- Картинка новости id.jpeg -->
-                <image src="image/6.jpeg" width="100%" height="225">
-                <div class="card-body">
-                  <!-- Текст новости -->
-                  <p class="card-text">В Волгоградской области наши волонтеры очистили леса от более чем 25 тонн мусора.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <!-- Кнопка открытия новости -->
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <image src="image/5.jpeg" width="100%" height="225">
-                <div class="card-body">
-                  <p class="card-text">Выборы 13 сентября. Голосуйте за наших кондидатов.</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <image src="image/4.jpeg" width="100%" height="225">
-                <div class="card-body">
-                  <p class="card-text">В «ДА» пройдёт открытая дискуссия о современном журналистском расследовании</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <image src="image/3.jpeg" width="100%" height="225">
-                <div class="card-body">
-                  <p class="card-text">Глава «ДА» посетил города Миасс, Чебаркуль и Златоуст в Челябинской области</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <image src="image/2.jpeg" width="100%" height="225">
-                <div class="card-body">
-                  <p class="card-text">Требуем прекратить преследование эколога Казимира Петрова</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <image src="image/1.jpeg" width="100%" height="225">
-                <div class="card-body">
-                  <p class="card-text">«Всё, что происходит в стране, зависит от вас»: Артём Олейник поздравил учеников гимназии «Согол» с началом учебного года</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Читать</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <?php
+              // Получаем данные за последние 6 дней
+              $res = mysqli_query($connect, "SELECT * FROM `news` ORDER BY `date` DESC LIMIT 6");
+              // Вывод строк таблицы в цикле
+              for ($i = 1; $i < 7; $i++){
+                $row = mysqli_fetch_assoc($res);
+                $path = 'news/news' . $i . '.php';
+                echo '<div class="col-md-4">
+                      <div class="card mb-4 shadow-sm">
+                        <!-- Картинка новости id.jpeg -->
+                        <image src=' . $row['picture'] . ' width="100%" height="225">
+                        <div class="card-body">
+                          <!-- Текст новости -->
+                          <p class="card-text">'. $row['news_title'] . '</p>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                              <!-- Кнопка открытия новости -->
+                              <button href="/profile.php" type="button" class="btn btn-sm btn-outline-secondary">
+                              <a href=' . $path . ' style="text-decoration: none">Читать</a>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>';    
+              }
+            ?>
 
             </div>
           </div>
