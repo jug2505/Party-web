@@ -13,7 +13,11 @@
 
     $password = md5($password);
 
-    mysqli_query($connect, "INSERT INTO `users` (`full_name`, `login`, `email`, `password`) VALUES ('$full_name', '$login', '$email', '$password')");
+    // Заменил на плейсхолдеры для защиты от sql-инъекций
+    $statement = $connect->prepare("INSERT INTO `users` (`full_name`, `login`, `email`, `password`) VALUES (?, ?, ?, ?)");
+    $statement->bind_param('ssss', $full_name, $login, $email, $password);
+    $statement->execute();
+    $statement->close();
 
     $_SESSION['message'] = 'Регистрация прошла успешно!';
     header('Location: ../account.php');

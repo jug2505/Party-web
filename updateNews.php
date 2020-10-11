@@ -15,14 +15,16 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Админ</title>
+  <title>Редактирование новости</title>
   <link rel="stylesheet" href="style/profile.css">
 </head>
 <body>
 
 <!-- Форма администрирования -->
-  <form action="database/newsupld.php" method="post" enctype="multipart/form-data">
-    <label>Заголовок новости <a href="news.php" class="stretched-link">(Посмотреть все новости)</a></label>
+  <form action="database/newsUpdate.php" method="post" enctype="multipart/form-data">
+    <label>ID новости <a href="news.php" class="stretched-link">(Посмотреть все новости)</a></label>
+    <input type="text" name="news_id" placeholder="Введите заголовок новости">
+    <label>Заголовок новости</label>
     <input type="text" name="news_title" placeholder="Введите заголовок новости">
     <label>Изображение новости</label>
     <input type="file" name="picture">
@@ -31,11 +33,6 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
     <label>Новость</label>
     <textarea type="text" name="news_text" placeholder="Введите текст новости" style="height: 300px"></textarea>
     <button type="submit">Отправить</button>
-    <a style="margin: 10px; text-align: center;" href="delete.php">Перейти на форму удаления</a>
-    <a style="margin: 10px; text-align: center;" href="updateNews.php">Перейти на форму редактирования новости</a>
-    <a style="margin: 10px; text-align: center;" href="updateAuthor.php">Перейти на форму редактирования автора</a>
-    <a style="margin: 10px; text-align: center;" href="addAuthor.php">Перейти на форму добавления журналиста</a>
-    <a style="margin: 10px; text-align: center;" href="database/logout.php">Выход</a>
     <?php
       if (isset($_SESSION['message'])) {
         echo '<p class="msg"> ' . $_SESSION['message'] . ' </p>';

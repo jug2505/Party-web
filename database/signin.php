@@ -6,10 +6,13 @@
   $login = $_POST['login'];
   $password = md5($_POST['password']);
 
-  $check_user = mysqli_query($connect, "SELECT * FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
-  if (mysqli_num_rows($check_user) > 0) {
+  $check_user = $connect->prepare("SELECT * FROM `users` WHERE `login` = ? AND `password` = ? ");
+  $check_user->bind_param('ss', $login, $password);
+  $check_user->execute();
+  $result = $check_user->get_result();
+  if ($result->num_rows > 0) {
 
-    $user = mysqli_fetch_assoc($check_user);
+    $user = $result->fetch_assoc();
 
     $_SESSION['user'] = [
       "id" => $user['id'],

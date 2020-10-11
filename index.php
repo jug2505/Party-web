@@ -59,7 +59,8 @@
 
             <?php
               // Получаем данные за последние 6 дней
-              $res = mysqli_query($connect, "SELECT * FROM `news` ORDER BY `date` DESC LIMIT 6");
+              //$res = mysqli_query($connect, "SELECT * FROM `news` ORDER BY `date` DESC LIMIT 6");
+              $res = mysqli_query($connect, "SELECT `news_title`, `news_text`, `picture`, `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id ORDER BY `date` DESC LIMIT 6");
               // Вывод строк таблицы в цикле
               for ($i = 1; $i < 7; $i++){
                 $row = mysqli_fetch_assoc($res);
@@ -77,6 +78,9 @@
                               <button href="/profile.php" type="button" class="btn btn-sm btn-outline-secondary">
                               <a href=' . $path . ' style="text-decoration: none">Читать</a>
                               </button>
+                              <div style="margin-left:30px">
+                                <p>Автор:' . $row['name'] . '</p>
+                              </div>
                             </div>
                           </div>
                         </div>
