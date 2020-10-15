@@ -18,9 +18,12 @@
     $statement->bind_param('s', $author_id);
     $statement->execute();
     $result_stmt = $statement->get_result();
-    $statement->close();
 
     if ($result_stmt->num_rows > 0){
+      $data = $result_stmt->fetch_assoc();
+      $statement->close();
+      unlink(realpath("../" . $data['picture']));
+
       $statement = $connect->prepare("DELETE `news`, `authors` FROM  `news` JOIN `authors` ON news.author_id = authors.author_id WHERE news.author_id = ? ");
       $statement->bind_param('s', $author_id);
       $statement->execute();

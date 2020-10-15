@@ -12,6 +12,7 @@
   $check_news->bind_param('s', $news_id);
   $check_news->execute();
   $result = $check_news->get_result();
+  $data = $result->fetch_assoc();
   $check_news->close();
 
   if ($result->num_rows == 0){
@@ -29,6 +30,7 @@
 
       } else {
         if ($news_title !== "" and $picture_name !== "" and $news_text !== ""){
+          unlink(realpath("../" . $data['picture']));
           $path = 'uploads/' . time() . $picture_name;
           move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
           
@@ -39,6 +41,7 @@
 
         } else {
           if ($news_title !== "" and $picture_name !== "" and $news_text === ""){
+            unlink(realpath("../" . $data['picture']));
             $path = 'uploads/' . time() . $picture_name;
             move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
             
@@ -49,6 +52,7 @@
           
           } else {
             if ($news_title === "" and $picture_name !== "" and $news_text !== ""){
+              unlink(realpath("../" . $data['picture']));
               $path = 'uploads/' . time() . $picture_name;
               move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
               
@@ -66,6 +70,7 @@
 
               } else {
                 if ($news_title === "" and $picture_name !== "" and $news_text === ""){
+                  unlink(realpath("../" . $data['picture']));
                   $path = 'uploads/' . time() . $picture_name;
                   move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
                   
@@ -98,16 +103,18 @@
       }
     } else {
       if ($news_title !== "" and $picture_name !== "" and $news_text !== ""){
-          $path = 'uploads/' . time() . $picture_name;
-          move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
-          
-          $statement = $connect->prepare("UPDATE `news` SET `news_title` = ?, `picture` = ?, `news_text` = ? WHERE `news_id` = ?");
-          $statement->bind_param('ssss', $news_title, $path, $news_text, $news_id);
-          $statement->execute();
-          $statement->close();
+        unlink(realpath("../" . $data['picture']));
+        $path = 'uploads/' . time() . $picture_name;
+        move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
+        
+        $statement = $connect->prepare("UPDATE `news` SET `news_title` = ?, `picture` = ?, `news_text` = ? WHERE `news_id` = ?");
+        $statement->bind_param('ssss', $news_title, $path, $news_text, $news_id);
+        $statement->execute();
+        $statement->close();
 
         } else {
           if ($news_title !== "" and $picture_name !== "" and $news_text === ""){
+            unlink(realpath("../" . $data['picture']));
             $path = 'uploads/' . time() . $picture_name;
             move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
             
@@ -118,6 +125,7 @@
           
           } else {
             if ($news_title === "" and $picture_name !== "" and $news_text !== ""){
+              unlink(realpath("../" . $data['picture']));
               $path = 'uploads/' . time() . $picture_name;
               move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
               
@@ -135,6 +143,7 @@
 
               } else {
                 if ($news_title === "" and $picture_name !== "" and $news_text === ""){
+                  unlink(realpath("../" . $data['picture']));
                   $path = 'uploads/' . time() . $picture_name;
                   move_uploaded_file($_FILES['picture']['tmp_name'], '../' . $path); 
                   
