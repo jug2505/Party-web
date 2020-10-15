@@ -1,11 +1,15 @@
 <?php include ('../statistic/stat.php');?>
 <?php require_once ('../database/connect.php'); ?>
-<?php  
-  $res = mysqli_query($connect, "SELECT * FROM `news` ORDER BY `date` DESC LIMIT 5");
-  for ($count = 0; $count < 5; $count++) {
-    $data = mysqli_fetch_assoc($res);
-  }
-?>
+<?php 
+  $id = $_GET['id'];
+  
+  $res = $connect->prepare("SELECT * FROM `news` WHERE `news_id` = ? ");
+  $res->bind_param('s', $id);
+  $res->execute();
+  $data = $res->get_result();
+  $data = $data->fetch_assoc();
+
+?> 
 
 <!doctype html>
 <html lang="ru">

@@ -49,7 +49,6 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
             <?php
               // Получаем данные
               $res = mysqli_query($connect, "SELECT `news_id`, `news_title`, news.author_id , `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id ORDER BY `date` DESC ");
-              //$res = mysqli_query($connect, "SELECT * FROM `authors`");
 
               // Вывод строк таблицы в цикле
               while ($row = mysqli_fetch_assoc($res)){

@@ -60,11 +60,11 @@
             <?php
               // Получаем данные за последние 6 дней
               //$res = mysqli_query($connect, "SELECT * FROM `news` ORDER BY `date` DESC LIMIT 6");
-              $res = mysqli_query($connect, "SELECT `news_title`, `news_text`, `picture`, `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id ORDER BY `date` DESC LIMIT 6");
+              $res = mysqli_query($connect, "SELECT `news_id`,`news_title`, `news_text`, `picture`, `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id ORDER BY `date` DESC LIMIT 6");
               // Вывод строк таблицы в цикле
               for ($i = 1; $i < 7; $i++){
                 $row = mysqli_fetch_assoc($res);
-                $path = 'news/news' . $i . '.php';
+                $path = 'news/news.php?id=' . $row['news_id'];
                 echo '<div class="col-md-4">
                       <div class="card mb-4 shadow-sm">
                         <!-- Картинка новости id.jpeg -->
