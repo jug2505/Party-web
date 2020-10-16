@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once 'database/config.php';
 
 if (isset($_SESSION['user'])) {
   header('Location: profile.php');
@@ -26,6 +27,9 @@ if (isset($_SESSION['user'])) {
     <button type="submit">Войти</button>
     <p>
       У вас ещё нет аккаунта? - <a href="/register.php">зарегистрируйтесь</a>!
+    </p>
+    <p style="text-align: center;">
+      <a href="https://oauth.yandex.ru/authorize?response_type=code&client_id=<?=ID?>" style="color: red">Войти через Яндекс</a>
     </p>
     <?php
       if (isset($_SESSION['message'])) {

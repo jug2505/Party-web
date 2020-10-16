@@ -7,14 +7,14 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-  <script src="jquery-3.5.1.min.js"></script>
-
+    
   <title>Поиск</title>
 </head>
 <body>
 
 	<main>
+		
+
 		<div class="container">
 			<br />
 			<h2 style="text-align: center;">
@@ -28,36 +28,43 @@
 			</div>
 			<br />
 			<div id="result"></div>
-		</div>
 	</main>
+ 	
+ 	 <script
+  		src="https://code.jquery.com/jquery-2.2.4.js"
+  		integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+  		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
 
-<script>
+<script type="text/javascript">
 	// Страница загружена
 	$(document).ready(function(){
+		function load_data(query){
+			$.ajax({
+	   			url:"database/searchFetch.php",
+				method:"POST",
+				data:{query:query},
+				success:function(data){
+				    $('#result').html(data);
+				}
+			});
+		}
+
+		load_data();
+		
 		// Введен символ в поле поиска
 		$('#search_text').keyup(function(){
-			let txt = $(this).val();
-
-			if (txt != ""){
-				$.ajax({
-					url:"database/searchFetch.php",
-					method:"post",
-					data:{search:txt},
-					dataType:"text",
-					success:function(data){
-						$('#result').html(data);
-					}
-				});
-			} else {
-				$('#result').html("");
-			}
+			var search = $(this).val();
+			if(search != ''){
+		   		load_data(search);
+		  	} else {
+		   		load_data();
+		  	}
 		});
 	});
-</script>>
+</script>
+
