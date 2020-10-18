@@ -5,8 +5,14 @@
 	if (isset ($_POST['query'])){
 		$search_text = $_POST['query'];
 	  
-	  $res = $connect->prepare("SELECT `news_id`, `date`, `news_title`, `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id AND MATCH(`news_title`, `news_text`) AGAINST (?) OR MATCH(`name`) AGAINST (?) ORDER BY `date` DESC LIMIT 15");
-	  $res->bind_param('ss', $search_text, $search_text);
+	  $res = $connect->prepare(
+        "SELECT `news_id`, `news_title`, `date`, `name` FROM `news`, `authors` 
+        WHERE news.author_id = authors.author_id AND
+        authors.name LIKE (?)  
+        ORDER BY `date` DESC"
+    );
+    $search_text = '%' . $search_text . '%';
+	  $res->bind_param('s', $search_text);
     $res->execute();
     $result = $res->get_result();
 

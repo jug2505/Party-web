@@ -15,19 +15,21 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>Редактирование жирналиста</title>
+  <title>Добавление города</title>
   <link rel="stylesheet" href="style/profile.css">
 </head>
 <body>
 
 <!-- Форма администрирования -->
-  <form action="database/authorAdd.php" method="post" enctype="multipart/form-data">
-    <label>ФИО</label>
-    <input type="text" name="name" placeholder="Введите ФИО журналиста">
-    <label>Доп. информация (Не обязательно)</label>
-    <input type="text" name="author_info" placeholder="Введите дополнительную информацию">
+  <form action="database/depAdd.php" method="post" enctype="multipart/form-data">
+    <label>Адрес</label>
+    <input type="text" name="adress" placeholder="Введите Адрес">
     <label>ID города</label>
     <input type="text" name="town_id" placeholder="Введите ID города">
+    <label>Начало работы</label>
+    <input type="time" name="time_start" min="06:00" max="18:00" required>
+    <label>Конец работы</label>
+    <input type="time" name="time_end" min="06:00" max="18:00" required>
     <button type="submit">Отправить</button>
     <?php
       if (isset($_SESSION['message'])) {

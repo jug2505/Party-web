@@ -6,7 +6,7 @@
 
 	session_start();
 	include_once 'config.php';
-  require_once 'connect.php';
+  	require_once 'connect.php';
 
 	$curl = curl_init();
 	curl_setopt($curl, CURLOPT_URL, "https://oauth.yandex.ru/token");
@@ -22,10 +22,10 @@
 
 
 	$check_user = $connect->prepare("SELECT * FROM `users` WHERE `login` = ? AND `password` IS NULL");
-  $check_user->bind_param('s', $data['id']);
-  $check_user->execute();
-  $result = $check_user->get_result();
-  $user = NULL;
+  	$check_user->bind_param('s', $data['id']);
+ 	$check_user->execute();
+  	$result = $check_user->get_result();
+  	$user = NULL;
 
   if ($result->num_rows > 0) {
 
