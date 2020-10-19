@@ -19,7 +19,7 @@
 			<br />
 			<h2 style="text-align: center;">
 				Поиск по словам и авторам
-			</h2>
+			</h2> 
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">Поиск</span>
@@ -38,6 +38,7 @@
   	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 
 </body>
+<script type="text/javascript" src="scripts/log.js"> </script>
 </html>
 
 <script type="text/javascript">
