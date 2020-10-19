@@ -6,8 +6,8 @@
 		$search_text = $_POST['query'];
 	  
 	  $res = $connect->prepare(
-        "SELECT `genre_info`, `name` FROM `news`, `authors`, `genre` 
-        WHERE news.author_id = authors.author_id AND genre.genre_id = news.genre_id
+        "SELECT `genre_info`, `town_name` FROM `news`, `towns`, `genre` 
+        WHERE news.town_id = towns.town_id AND genre.genre_id = news.genre_id
         AND `genre_info` LIKE (?) 
         ORDER BY `date` DESC"
     );
@@ -21,15 +21,15 @@
 	  	$output .= '<table class="table ">
 		  							<thead class="thead-light">
 					            <tr>
-					              <th scope="col">Жанр</th>
-                        <th scope="col">Автор</th>
+					              <th scope="col">Город</th>
+                        <th scope="col">Жанр</th>
 					            </tr>
 					          </thead>';
 
 			while ($row = $result->fetch_assoc()) {
 				$output .= '<tr>
-	                    <td>' . $row['genre_info'] . '</td>
-                      <td>' . $row['name'] . '</td>
+	                    <td>' . $row['town_name'] . '</td>
+                      <td>' . $row['genre_info'] . '</td>
 	                  </tr>';
 			}
 			echo $output;

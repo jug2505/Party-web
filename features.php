@@ -15,6 +15,8 @@
     <a style="margin: 10px; text-align: center;" href="newsByAuthor.php">Узнать новости по автору</a>
     <a style="margin: 10px; text-align: center;" href="authorByGenre.php">Узнать авторов по жанру</a>
     <a style="margin: 10px; text-align: center;" href="genreByTown.php">Узнать жанры по городу</a>
+    <a style="margin: 10px; text-align: center;" href="townByGenre.php">Узнать город по жанру</a>
+    <a style="margin: 10px; text-align: center;" href="depByTown.php">Узнать отделение по городу</a>
   </form>
   
 
