@@ -34,12 +34,39 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
     ?>
   </form>
 
-  <form action="database/authordelete.php" method="post" enctype="multipart/form-data" style="margin-left: 50px;">
+  <form action="database/authordelete.php" method="post" enctype="multipart/form-data" style="margin-left: 25px;">
     <label>ID удаляемого автора</label>
     <a href="authors.php" class="stretched-link">(Посмотреть всех авторов)</a>
     <input type="number" name="author_id" placeholder="Введите ID автора">
     <button type="submit">Отправить</button>
   </form>
+
+  
+  <form action="database/deleteGenre.php" method="post" enctype="multipart/form-data" style="margin-left: 25px;">
+    <label>ID удаляемого жанра</label>
+    <input type="number" name="genre_id" placeholder="Введите ID">
+    <button type="submit">Отправить</button>
+  </form>
+
+  <form action="database/deleteTown.php" method="post" enctype="multipart/form-data" style="margin-left: 25px;">
+    <label>ID удаляемого города</label>
+    <input type="number" name="town_id" placeholder="Введите ID">
+    <button type="submit">Отправить</button>
+  </form>
+
+  <form action="database/deleteDep.php" method="post" enctype="multipart/form-data" style="margin-left: 25px;">
+    <label>ID удаляемого отделения</label>
+    <input type="number" name="dep_id" placeholder="Введите ID">
+    <button type="submit">Отправить</button>
+  </form>
+
+  <form action="database/deleteEvent.php" method="post" enctype="multipart/form-data" style="margin-left: 25px;">
+    <label>ID удаляемого события</label>
+    <input type="number" name="event_id" placeholder="Введите ID">
+    <button type="submit">Отправить</button>
+  </form>
+
+  
 
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
