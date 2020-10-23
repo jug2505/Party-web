@@ -9,6 +9,7 @@
         "SELECT `genre_info`, `town_name` FROM `news`, `towns`, `genre` 
         WHERE news.town_id = towns.town_id AND genre.genre_id = news.genre_id
         AND `genre_info` LIKE (?) 
+		GROUP BY genre.genre_id
         ORDER BY `date` DESC"
     );
     $search_text = '%' . $search_text . '%';

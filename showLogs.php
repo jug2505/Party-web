@@ -31,7 +31,7 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
 		<div class="container">
 			<br />
 			<h2 style="text-align: center;">
-				Поиск логов по пользователю
+				Поиск логов по пользователю <a href="users.php">(Просмотр всех)</a>
 			</h2>
 			<div class="form-group">
 				<div class="input-group">
@@ -51,7 +51,6 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
   	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
 
 </body>
-<script type="text/javascript" src="scripts/log.js"> </script>
 </html>
 
 <script type="text/javascript">

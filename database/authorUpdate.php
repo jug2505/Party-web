@@ -38,3 +38,4 @@
   }
   header('Location: ../updateAuthor.php');
 ?>
+

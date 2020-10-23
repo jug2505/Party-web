@@ -22,7 +22,7 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Новости</title>
+    <title>Пользователи</title>
   
   </head>
   <body>  
@@ -30,7 +30,7 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
     <main role="main">
       <!-- Надпись по центру -->
       <div style="text-align: center">
-        <h2><b style="font-size:larg;">Таблица всех новостей</b></h2>
+        <h2><b style="font-size:larg;">Таблица всех пользователей</b></h2>
       </div>
 
       <!-- Таблица -->
@@ -38,25 +38,25 @@ if ($_SESSION['user']['full_name'] !== 'admin' && $_SESSION['user']['email'] !==
         <table class="table table-bordered w-50">
           <thead class="thead-light">
             <tr>
-              <th scope="col">ID Новости</th>
-              <th scope="col">Название</th>
-              <th scope="col">ID автора</th>
-              <th scope="col">ФИО автора</th>
+              <th scope="col">ID</th>
+              <th scope="col">Имя</th>
+              <th scope="col">Login</th>
+              <th scope="col">email</th>
             </tr>
           </thead>
             <tbody>
               
             <?php
               // Получаем данные
-              $res = mysqli_query($connect, "SELECT `news_id`, `news_title`, news.author_id , `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id ORDER BY `date` DESC ");
+              $res = mysqli_query($connect, "SELECT * FROM `users` ");
 
               // Вывод строк таблицы в цикле
               while ($row = mysqli_fetch_assoc($res)){
                 echo '<tr>
-                       <td>' . $row['news_id'] . '</td>
-                       <td>' . $row['news_title'] . '</td>
-                       <td>' . $row['author_id'] . '</td>
-                       <td>' . $row['name'] . '</td>
+                       <td>' . $row['id'] . '</td>
+                       <td>' . $row['full_name'] . '</td>
+                       <td>' . $row['login'] . '</td>
+                       <td>' . $row['email'] . '</td>
                       </tr>';
               }
             ?>

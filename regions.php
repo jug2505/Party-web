@@ -78,5 +78,4 @@
     <script src="scripts/yandex_map.js" type="text/javascript"></script>
 
   </body>
-  <script type="text/javascript" src="scripts/log.js"> </script>
 </html>

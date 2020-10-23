@@ -2,11 +2,19 @@
 	require_once ('connect.php');
 
 	$output = '';
-	if (isset ($_POST['query'])){
-		$search_text = $_POST['query'];
+	if (isset ($_POST['genre']) and isset($_POST['town'])){
+    $search_genre = $_POST['genre'];
+    $search_town = $_POST['town'];
 	  
-	  $res = $connect->prepare("SELECT `news_id`, `date`, `news_title`, `name` FROM `news`, `authors` WHERE news.author_id = authors.author_id AND MATCH(`news_title`, `news_text`) AGAINST (?) OR MATCH(`name`) AGAINST (?) ORDER BY `date` DESC LIMIT 15");
-	  $res->bind_param('ss', $search_text, $search_text);
+	  $res = $connect->prepare(
+        "SELECT `news_id`, `news_title`, `date`, `genre_info`, `town_name` FROM `news`, `genre`, `towns` 
+        WHERE news.town_id = towns.town_id AND genre.genre_id = news.genre_id AND
+        `genre_info` LIKE (?) AND `town_name` LIKE (?) 
+        ORDER BY `date` DESC"
+    );
+    $search_genre = '%' . $search_genre . '%';
+    $search_town = '%' . $search_town . '%';
+	  $res->bind_param('ss', $search_genre, $search_town);
     $res->execute();
     $result = $res->get_result();
 
@@ -17,8 +25,9 @@
 					            <tr>
 					              <th scope="col">Дата</th>
 					              <th scope="col">Название новости</th>
-					              <th scope="col">Автор</th>
-					            </tr> 
+                        <th scope="col">Жанр</th>
+                        <th scope="col">Город</th>
+					            </tr>
 					          </thead>';
 
 			while ($row = $result->fetch_assoc()) {
@@ -26,7 +35,8 @@
 				$output .= '<tr>
 	                    <td>' . $row['date'] . '</td>
 	                    <td><a href=' . $path . ' style="text-decoration: none">' . $row['news_title'] . '</a></td>
-	                    <td>' . $row['name'] . '</td>
+                      <td>' . $row['genre_info'] . '</td>
+                      <td>' . $row['town_name'] . '</td>
 	                  </tr>';
 			}
 			echo $output;

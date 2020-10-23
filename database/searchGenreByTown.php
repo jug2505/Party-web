@@ -8,7 +8,8 @@
 	  $res = $connect->prepare(
         "SELECT `genre_info`, `town_name` FROM `news`, `towns`, `genre` 
         WHERE news.town_id = towns.town_id AND genre.genre_id = news.genre_id
-        AND `town_name` LIKE (?) 
+        AND `town_name` LIKE (?)
+		GROUP BY towns.town_id 
         ORDER BY `date` DESC"
     );
     $search_text = '%' . $search_text . '%';

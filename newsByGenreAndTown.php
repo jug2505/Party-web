@@ -18,12 +18,13 @@
 		<div class="container">
 			<br />
 			<h2 style="text-align: center;">
-				Поиск по словам и авторам
-			</h2> 
+				Поиск новостей по городу и жанру
+			</h2>
 			<div class="form-group">
 				<div class="input-group">
 					<span class="input-group-addon">Поиск</span>
-					<input type="text" name="search_text" id="search_text" class="form-control" />
+					<input type="text" name="search_genre" id="search_genre" class="form-control" placeholder="Жанр" />
+                    <input type="text" name="search_town" id="search_town" class="form-control" placeholder="Город"/>
 				</div>
 			</div>
 			<br />
@@ -43,28 +44,38 @@
 <script type="text/javascript">
 	// Страница загружена
 	$(document).ready(function(){
-		function load_data(query){
+		function load_data(genre, town){
 			$.ajax({
-	   			url:"database/searchFetch.php",
+	   			url:"database/searchNewsByGenreAndTown.php",
 				method:"POST",
-				data:{query:query},
+				data:{genre:genre, town:town},
 				success:function(data){
 				    $('#result').html(data);
 				}
 			});
 		}
 
-		load_data();
+        load_data();
+        var search_genre = '';
+        var search_town = '';
 		
 		// Введен символ в поле поиска
-		$('#search_text').keyup(function(){
-			var search = $(this).val();
+		$('#search_genre').keyup(function(){
+			search_genre = $(this).val();
 			if(search != ''){
-		   		load_data(search);
+		   		load_data(search_genre, search_town);
+		  	} else {
+		   		load_data();
+		  	}
+        });
+        
+        $('#search_town').keyup(function(){
+			search_town = $(this).val();
+			if(search_town != ''){
+		   		load_data(search_genre, search_town);
 		  	} else {
 		   		load_data();
 		  	}
 		});
 	});
 </script>
-

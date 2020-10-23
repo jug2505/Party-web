@@ -8,9 +8,9 @@
 	  $res = $connect->prepare(
         "SELECT `date`, `page`, `user_id`, `full_name`, `login` FROM `logs`, `users` 
         WHERE `user_id` = users.id
-        AND `login` LIKE (?) ORDER BY `date` DESC"
+        AND `user_id` LIKE (?) ORDER BY `date` DESC"
     );
-    $search_text = '%' . $search_text . '%';
+    $search_text = $search_text;
 	  $res->bind_param('s', $search_text);
     $res->execute();
     $result = $res->get_result();

@@ -8,7 +8,8 @@
 	  $res = $connect->prepare(
         "SELECT `genre_info`, `name` FROM `news`, `authors`, `genre` 
         WHERE news.author_id = authors.author_id AND genre.genre_id = news.genre_id
-        AND `genre_info` LIKE (?) 
+        AND `genre_info` LIKE (?)
+		GROUP BY authors.author_id 
         ORDER BY `date` DESC"
     );
     $search_text = '%' . $search_text . '%';
@@ -38,3 +39,5 @@
 	  	echo 'Ничего не найдено';
 	  }
 	}
+?>
+
