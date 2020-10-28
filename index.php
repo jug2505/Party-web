@@ -146,7 +146,7 @@
         </div>
 
         <!-- Таблица -->
-        <div align="center">
+        <div class="container" align="center">
           <table class="table table-bordered w-75">
               <thead class="thead-light">
                 <tr>
@@ -209,22 +209,19 @@
   
   // Показ повостей
   function showNews(id){
-      let formData = new FormData();
-      formData.append('id', id);
       $('#news-content').hide();
 
-      fetch('database/showNews.php',{ 
-        method: 'POST',
-        body: formData})
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (body) {
-          document.getElementById('news-content').innerHTML = body;
-        })
-        .then(function(){
+      $.ajax({
+	   		url:"database/showNews.php",
+				method:"POST",
+				data:{id:id},
+				success:function(data){
+				    $('#news-content').html(data);
+				}
+			}).then(function(){
           $('#news-content').fadeIn(3000);
         });
+
     }
 
     var isAboutShown = false;
